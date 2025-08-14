@@ -9,7 +9,7 @@
 
 #define PORT 6688
 #define BACKLOG 1024
-main() {
+int main() {
 
     //第一步： 创建socket,获得文件描述符
     //int socket(int domain, int type, int protocol);
@@ -28,7 +28,7 @@ main() {
     //第三步： 监听mySocket 连接建立的过程，也就是常说的三次握手
     //int listen(int sockfd, int backlog); backlog该如何设置？
     int lid = listen(mySocket, BACKLOG);
-    printf("listen_id: %d \n", bid);
+    printf("listen_id: %d \n", lid);
 
     //第四步： 获取内核已建立连接（完成3次握手）的请求
     // int accept(int sockfd, struct sockaddr *addr, socklen_t *addrlen);
@@ -41,6 +41,5 @@ main() {
         printf("accept_id: %d, remote_ip %s, remote_port %d, sockLen %d \n", aid, inet_ntoa(stSocketAddrRemote.sin_addr), ntohs(stSocketAddrRemote.sin_port), stSocketAddrRemoteLen);
     }
     
-
-
+    return 0;
 }
